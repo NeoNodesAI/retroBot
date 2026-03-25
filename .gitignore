@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# Environment Variables (NEVER COMMIT THESE!)
+.env
+.env.*
+.env.local
+.env.production
+.env.development
+.env.dev
+.env.prod
+.env.test
+.env.backup
+.env.save
+.env.old
+.env.bak
+.env.tmp
+PRIVATE_SETUP.txt
+COMMANDS.txt
+*.key
+*.pem
+*.crt
+config/production.json
+config/secrets.*
+secrets.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# LangGraph
+.langgraph/
+
