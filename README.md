@@ -5,33 +5,55 @@ Developed by **NeoNodes**.
 
 ---
 
-## Setup
+## What it does
 
-```bash
-# Install dependencies
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+retroBot is a conversational AI agent that answers crypto questions in natural language — prices, technical analysis, market signals, and on-chain activity, all in one place.
 
-# Configure environment
-cp .env.example .env
-# Edit .env and add your API keys
-
-# Start server
-python -m src.api
-```
-
-Server runs at `http://localhost:8000`
+Ask things like:
+- *"What's the BTC price?"*
+- *"Give me a technical analysis of ETH"*
+- *"Is SOL overbought right now?"*
+- *"Compare BTC price across exchanges"*
 
 ---
 
 ## Features
 
-- Real-time crypto prices from Binance, Coinbase, Kraken
-- LangGraph-powered conversational agent
-- LangGraph Cloud-compatible API (streaming + sync)
-- On-chain tooling via Web3
-- Warden Protocol integration
+**Market Data**
+- Live prices from Binance, Coinbase, and Kraken with cross-exchange comparison
+- Historical OHLCV data fetched on demand
+
+**Technical Analysis**
+- RSI, MACD, EMA, Bollinger Bands, Momentum
+- Moving averages (SMA/EMA) across multiple timeframes
+- Support & resistance level detection
+- Volatility scoring
+
+**On-Chain**
+- Inference recording via Warden Protocol (Base network)
+- Web3 wallet integration for on-chain attestations
+
+**API & Infrastructure**
+- LangGraph Cloud-compatible REST API (streaming + sync)
+- Conversational memory via thread management
+- Retro-themed `/retro` command system for status, stats, and diagnostics
+
+---
+
+## Setup
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+cp .env.example .env
+# Add your API keys to .env
+
+python -m src.api
+```
+
+Server runs at `http://localhost:8000`
 
 ---
 
@@ -45,6 +67,11 @@ curl http://localhost:8000/health
 curl -X POST http://localhost:8000/runs/wait \
   -H "Content-Type: application/json" \
   -d '{"assistant_id":"retrobot-warden-001","input":{"messages":[{"role":"user","content":"BTC price"}]}}'
+
+# Streaming response
+curl -X POST http://localhost:8000/runs/stream \
+  -H "Content-Type: application/json" \
+  -d '{"assistant_id":"retrobot-warden-001","input":{"messages":[{"role":"user","content":"ETH technical analysis"}]}}'
 ```
 
 Key endpoints: `/runs/wait`, `/runs/stream`, `/threads`, `/health`, `/info`
